@@ -60,7 +60,7 @@ public class mensaje {
 
     @Override
     public String toString() {
-        return "prioridad =  "+prioridad+" mensaje = "+mensaje+"DE: "+emisor+"R: "+receptor; //To change body of generated methods, choose Tools | Templates.
+        return "prioridad =  "+prioridad+" mensaje = "+mensaje+" DE: "+emisor+" R: "+receptor; //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -74,8 +74,6 @@ public class SamuelFlores_Lab2 {
                         }
 
                     }
-                    log=null;
-
                 }
 
             }
