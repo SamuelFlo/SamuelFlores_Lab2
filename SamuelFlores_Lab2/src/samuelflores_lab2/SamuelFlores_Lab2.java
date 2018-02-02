@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author Samuel
  */
 public class SamuelFlores_Lab2 {
+
     static ArrayList<detectives> detectives = new ArrayList();
     static ArrayList<login> casos = new ArrayList();
     static detectives log;
@@ -29,60 +30,54 @@ public class SamuelFlores_Lab2 {
                     + "c-Eliminar detectives\n"
                     + "d-Log in\n"
                     + "e-Salir");
-            if(opcion.equalsIgnoreCase("a")){
+            if (opcion.equalsIgnoreCase("a")) {
                 agregar();
-            }else if(opcion.equalsIgnoreCase("b")){
+            } else if (opcion.equalsIgnoreCase("b")) {
                 modificar();
-                
-            }else if(opcion.equalsIgnoreCase("c")){
+
+            } else if (opcion.equalsIgnoreCase("c")) {
                 eliminar();
-                
-            }else if(opcion.equalsIgnoreCase("d")){
-                String usuario=JOptionPane.showInputDialog("Ingrese su usuario: ");
-                String contrasena=JOptionPane.showInputDialog("Ingrese su contrasena: ");
+
+            } else if (opcion.equalsIgnoreCase("d")) {
+                String usuario = JOptionPane.showInputDialog("Ingrese su usuario: ");
+                String contrasena = JOptionPane.showInputDialog("Ingrese su contrasena: ");
                 for (detectives usuarios : detectives) {
-                    if(usuarios.getUsuario().equals(usuario)&&usuarios.getContrasena().equals(contrasena)){
-                        System.out.println("HOLA");
+                    if (usuarios.getUsuario().equals(usuario) && usuarios.getContrasena().equals(contrasena)) {
+                        String opc = "";
+                        while (!opc.equalsIgnoreCase("e")) {
+                            opc = JOptionPane.showInputDialog("a-Listar mis datos\n"
+                                    + "b-Listar casos\n"
+                                    + "c-Registrar casos\n"
+                                    + "d-Modificar casos \n"
+                                    + "e-Enviar mensaje\n"
+                                    + "f-Listar mensajes\n"
+                                    + "e-logout");
+                            switch (opc) {
+                                case "a":
+                                    salidadedatos();
+                                    break;
+                                case "b":
+                                    salidadecasos();
+                                    break;
+                                case "c":
+                                    agregarcasos();
+                                    break;
+                                case "d":
+                                    modificarcasos();
+                                    break;
+                                case "e":
+                                    break;
+                                case "f":
+                                    break;
+                            }
+                        }
+
                     }
-                    
+
                 }
-                String opc="";
-                while (!opc.equalsIgnoreCase("e")) {
-                    opc = JOptionPane.showInputDialog("a-Listar mis datos\n"
-                            + "b-Listar casos\n"
-                            + "c-Registrar casos\n"
-                            + "d-Modificar casos \n"
-                            + "e-Enviar mensaje\n"
-                            + "f-Listar mensajes\n"
-                            + "e-logout");
-                    switch(opc){
-                        case "a":
-                            salidadedatos();
-                            break;
-                        case "b":
-                            salidadecasos();
-                            break;
-                        case "c":
-                            agregarcasos();
-                            break;
-                        case "d":
-                            modificarcasos();
-                            break;
-                        case "e":
-                            break;
-                        case "f":
-                            break;
-                    }
-                }
-                
-                
-            }else if(opcion.equalsIgnoreCase("e")){
-                
-            }else if(opcion.equals("f")){
-                
-            }
+
+            } 
         }
-        
 
     }
     public static void agregar(){

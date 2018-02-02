@@ -69,6 +69,6 @@ public class login {
 
     @Override
     public String toString() {
-        return "lugar = "+lugar+"tipo = "+tipo+"descripcion = "+descripcion+"detectiveacargo = "+detectiveacargo+"estado = "+estado; //To change body of generated methods, choose Tools | Templates.
+        return "lugar = "+lugar+" tipo = "+tipo+" descripcion = "+descripcion+" detectiveacargo = "+detectiveacargo+" estado = "+estado; //To change body of generated methods, choose Tools | Templates.
     }
 }

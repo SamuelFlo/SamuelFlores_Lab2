@@ -109,7 +109,7 @@ public class detectives {
 
     @Override
     public String toString() {
-        return " nombre= "+nombre+" edad= "+edad+" nacionalidad= "+nacionalidad+"anos laborales = "+anoslaborales+"nivel = "+nivel; //To change body of generated methods, choose Tools | Templates.
+        return " nombre= "+nombre+" edad= "+edad+" nacionalidad= "+nacionalidad+" anos laborales = "+anoslaborales+" nivel = "+nivel; //To change body of generated methods, choose Tools | Templates.
     }
     
 }
