@@ -14,10 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class SamuelFlores_Lab2 {
     static ArrayList<detectives> detectives = new ArrayList();
-    static ArrayList casos = new ArrayList();
+    static ArrayList<login> casos = new ArrayList();
     static detectives log;
-    static String usuario="";
-    static String contrasena="";
 
     /**
      * @param args the command line arguments
@@ -40,13 +38,41 @@ public class SamuelFlores_Lab2 {
                 eliminar();
                 
             }else if(opcion.equalsIgnoreCase("d")){
-                usuario=JOptionPane.showInputDialog("Ingrese su usuario: ");
-                contrasena=JOptionPane.showInputDialog("Ingrese su contrasena: ");
-                for (detectives usuario : detectives) {
-                    if(usuario.getUsuario().equals(usuario)&&usuario.getContrasena().equals(contrasena)){
-                        System.out.println("BIENVENIDO");
+                String usuario=JOptionPane.showInputDialog("Ingrese su usuario: ");
+                String contrasena=JOptionPane.showInputDialog("Ingrese su contrasena: ");
+                for (detectives usuarios : detectives) {
+                    if(usuarios.getUsuario().equals(usuario)&&usuarios.getContrasena().equals(contrasena)){
+                        System.out.println("HOLA");
                     }
                     
+                }
+                String opc="";
+                while (!opc.equalsIgnoreCase("e")) {
+                    opc = JOptionPane.showInputDialog("a-Listar mis datos\n"
+                            + "b-Listar casos\n"
+                            + "c-Registrar casos\n"
+                            + "d-Modificar casos \n"
+                            + "e-Enviar mensaje\n"
+                            + "f-Listar mensajes\n"
+                            + "e-logout");
+                    switch(opc){
+                        case "a":
+                            salidadedatos();
+                            break;
+                        case "b":
+                            salidadecasos();
+                            break;
+                        case "c":
+                            agregarcasos();
+                            break;
+                        case "d":
+                            modificarcasos();
+                            break;
+                        case "e":
+                            break;
+                        case "f":
+                            break;
+                    }
                 }
                 
                 
@@ -97,8 +123,8 @@ public class SamuelFlores_Lab2 {
             int nivel = Integer.parseInt(niv);
             String listadecasos = "";
             String buzon = JOptionPane.showInputDialog("Ingrese su mensaje en el buzon: ");
-            usuario = JOptionPane.showInputDialog("Ingrese su usuario: ");
-            contrasena = JOptionPane.showInputDialog("Ingrese su contrasena: ");
+            String usuario = JOptionPane.showInputDialog("Ingrese su usuario: ");
+            String contrasena = JOptionPane.showInputDialog("Ingrese su contrasena: ");
             detectives.set(pos, new detectives(nombre, edad, nacionalidad, anoslaborales, nivel, listadecasos, buzon, usuario, contrasena));
         }
 
@@ -120,18 +146,46 @@ public class SamuelFlores_Lab2 {
         }
         
     }
-    public static void login(){
-        
+    public static void agregarcasos(){
+        String lugar = JOptionPane.showInputDialog("Ingrese el lugar: ");
+        String tipo = JOptionPane.showInputDialog("Ingrese el tipo(homicidio, robo, secuestro, violacion): ");
+        String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
+        String detectiveacargo= JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
+        String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
+        casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado));
     }
-    
-    public static boolean contra(String pas, String user){
-        for (detectives usuario : detectives) {
-            if(usuario.getContrasena().equals(pas)&&usuario.getUsuario().equals(user)){
-                log=usuario;
-                return true;
+    public static void salidadedatos(){
+        String salida = "";
+        for (detectives temp : detectives) {
+
+            if (temp instanceof detectives) {
+                salida += detectives.indexOf(temp) + " ";
+                salida += temp + "\n";
             }
         }
-        return false;
+        JOptionPane.showMessageDialog(null, salida);
+    }
+    public static void salidadecasos(){
+        String salida = "";
+        for (login temp : casos) {
+            if (temp instanceof login) {
+                salida += casos.indexOf(temp) + " ";
+                salida += temp + "\n";
+            }
+        }
+        JOptionPane.showMessageDialog(null, salida);
+    }
+    public static void modificarcasos() {
+        String pos1 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+        int pos = Integer.parseInt(pos1);
+        if (pos >= 0 && pos < casos.size() && casos.get(pos) instanceof login) {
+            String lugar = JOptionPane.showInputDialog("Ingrese el lugar: ");
+            String tipo = JOptionPane.showInputDialog("Ingrese el tipo(homicidio, robo, secuestro, violacion): ");
+            String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
+            String detectiveacargo = JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
+            String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
+            casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado));
+        }
     }
     
 }
