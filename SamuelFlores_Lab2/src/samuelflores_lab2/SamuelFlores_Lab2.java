@@ -41,42 +41,41 @@ public class SamuelFlores_Lab2 {
             } else if (opcion.equalsIgnoreCase("d")) {
                 String usuario = JOptionPane.showInputDialog("Ingrese su usuario: ");
                 String contrasena = JOptionPane.showInputDialog("Ingrese su contrasena: ");
-                for (detectives usuarios : detectives) {
-                    if (usuarios.getUsuario().equals(usuario) && usuarios.getContrasena().equals(contrasena)) {
-                        String opc = "";
-                        while (!opc.equalsIgnoreCase("e")) {
-                            opc = JOptionPane.showInputDialog("a-Listar mis datos\n"
-                                    + "b-Listar casos\n"
-                                    + "c-Registrar casos\n"
-                                    + "d-Modificar casos \n"
-                                    + "e-Enviar mensaje\n"
-                                    + "f-Listar mensajes\n"
-                                    + "e-logout");
-                            switch (opc) {
-                                case "a":
-                                    salidadedatos();
-                                    break;
-                                case "b":
-                                    salidadecasos();
-                                    break;
-                                case "c":
-                                    agregarcasos();
-                                    break;
-                                case "d":
-                                    modificarcasos();
-                                    break;
-                                case "e":
-                                    break;
-                                case "f":
-                                    break;
-                            }
+                if (usuarioex(usuario) && contra(contrasena, usuario)) {
+                    String opc = "";
+                    while (!opc.equalsIgnoreCase("g")) {
+                        opc = JOptionPane.showInputDialog("a-Listar mis datos\n"
+                                + "b-Listar casos\n"
+                                + "c-Registrar casos\n"
+                                + "d-Modificar casos \n"
+                                + "e-Enviar mensaje\n"
+                                + "f-Listar mensajes\n"
+                                + "g-logout");
+                        switch (opc) {
+                            case "a":
+                                salidadedatos();
+                                break;
+                            case "b":
+                                salidadecasos();
+                                break;
+                            case "c":
+                                agregarcasos();
+                                break;
+                            case "d":
+                                modificarcasos();
+                                break;
+                            case "e":
+                                break;
+                            case "f":
+                                break;
                         }
 
                     }
+                    log=null;
 
                 }
 
-            } 
+            }
         }
 
     }
@@ -147,7 +146,11 @@ public class SamuelFlores_Lab2 {
         String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
         String detectiveacargo= JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
         String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
-        casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado));
+        String evidencia =JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
+        String descripcionevidencia=JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
+        String niveldepeligrosidad=JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: ");
+        casos.add(new login( lugar,  tipo, descripcion, detectiveacargo, estado, evidencia, descripcionevidencia, niveldepeligrosidad));
+   
     }
     public static void salidadedatos(){
         String salida = "";
@@ -179,8 +182,29 @@ public class SamuelFlores_Lab2 {
             String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
             String detectiveacargo = JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
             String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
-            casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado));
+            String evidencia = JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
+            String descripcionevidencia = JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
+            String niveldepeligrosidad = JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: ");
+            casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado, evidencia, descripcionevidencia, niveldepeligrosidad));
         }
     }
+    public static boolean usuarioex(String usuario) {
+        for (detectives user: detectives) {
+            if (user.getUsuario().equals(usuario)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean contra(String pas,String user){
+        for (detectives usuario : detectives) {
+            if(usuario.getContrasena().equals(pas)&&usuario.getUsuario().equals(user)){
+                log=usuario;
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
 }

@@ -15,17 +15,27 @@ public class login {
     private String descripcion;
     private String detectiveacargo;
     private String estado;
+    private String evidencia;
+    private String descripcionevidencia;
+    private String niveldepeligrosidad;
 
     public login() {
     }
 
-    public login(String lugar, String tipo, String descripcion, String detectiveacargo, String estado) {
+    public login(String lugar, String tipo, String descripcion, String detectiveacargo, String estado, String evidencia, String descripcionevidencia, String niveldepeligrosidad) {
         this.lugar = lugar;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.detectiveacargo = detectiveacargo;
         this.estado = estado;
+        this.evidencia = evidencia;
+        this.descripcionevidencia = descripcionevidencia;
+        this.niveldepeligrosidad = niveldepeligrosidad;
     }
+
+    
+
+    
 
     public String getLugar() {
         return lugar;
@@ -67,8 +77,34 @@ public class login {
         this.estado = estado;
     }
 
+    public String getEvidencia() {
+        return evidencia;
+    }
+
+    public void setEvidencia(String evidencia) {
+        this.evidencia = evidencia;
+    }
+
+    public String getDescripcionevidencia() {
+        return descripcionevidencia;
+    }
+
+    public void setDescripcionevidencia(String descripcionevidencia) {
+        this.descripcionevidencia = descripcionevidencia;
+    }
+
+    public String getNiveldepeligrosidad() {
+        return niveldepeligrosidad;
+    }
+
+    public void setNiveldepeligrosidad(String niveldepeligrosidad) {
+        this.niveldepeligrosidad = niveldepeligrosidad;
+    }
+    
+
     @Override
     public String toString() {
-        return "lugar = "+lugar+" tipo = "+tipo+" descripcion = "+descripcion+" detectiveacargo = "+detectiveacargo+" estado = "+estado; //To change body of generated methods, choose Tools | Templates.
+        return "lugar = "+lugar+" tipo = "+tipo+" descripcion = "+descripcion+" detectiveacargo = "+detectiveacargo+" estado = "+estado+" evidencia = "+evidencia+" descripcion = "+descripcionevidencia+"peligro = "+niveldepeligrosidad; //To change body of generated methods, choose Tools | Templates.
     }
 }
+
