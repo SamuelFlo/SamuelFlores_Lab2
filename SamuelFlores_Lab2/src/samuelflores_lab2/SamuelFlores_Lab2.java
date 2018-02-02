@@ -16,6 +16,7 @@ public class SamuelFlores_Lab2 {
 
     static ArrayList<detectives> detectives = new ArrayList();
     static ArrayList<login> casos = new ArrayList();
+    static ArrayList<mensaje> mensajeria = new ArrayList();
     static detectives log;
 
     /**
@@ -65,8 +66,10 @@ public class SamuelFlores_Lab2 {
                                 modificarcasos();
                                 break;
                             case "e":
+                                mensaje();
                                 break;
                             case "f":
+                                listarme();
                                 break;
                         }
 
@@ -146,10 +149,20 @@ public class SamuelFlores_Lab2 {
         String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
         String detectiveacargo= JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
         String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
-        String evidencia =JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
-        String descripcionevidencia=JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
-        String niveldepeligrosidad=JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: ");
+        String evidencia="";
+        String descripcionevidencia="";
+        String niveldepeligrosidad="";
+        char r='s';
+        while(r=='s'){
+             evidencia =JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
+             descripcionevidencia=JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
+             niveldepeligrosidad=JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: "); 
+             String res=JOptionPane.showInputDialog("Desea seguir agregando evidencia: ");
+             r=res.charAt(0);
+        }
         casos.add(new login( lugar,  tipo, descripcion, detectiveacargo, estado, evidencia, descripcionevidencia, niveldepeligrosidad));
+        
+        
    
     }
     public static void salidadedatos(){
@@ -182,10 +195,18 @@ public class SamuelFlores_Lab2 {
             String descripcion = JOptionPane.showInputDialog("Ingrese la descripcion: ");
             String detectiveacargo = JOptionPane.showInputDialog("Ingrese el detective a cargo: ");
             String estado = JOptionPane.showInputDialog("Ingrese el estado(en proceso, resuelto): ");
-            String evidencia = JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
-            String descripcionevidencia = JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
-            String niveldepeligrosidad = JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: ");
-            casos.add(new login(lugar, tipo, descripcion, detectiveacargo, estado, evidencia, descripcionevidencia, niveldepeligrosidad));
+            String evidencia="";
+            String descripcionevidencia = "";
+            String niveldepeligrosidad = "";
+            char r = 's';
+            while (r == 's') {
+                evidencia = JOptionPane.showInputDialog("Ingrese el nombre de la evidencia: ");
+                descripcionevidencia = JOptionPane.showInputDialog("Ingrese la descripcion de la evidencia: ");
+                niveldepeligrosidad = JOptionPane.showInputDialog("Ingrese el nivel de peligrosidad: ");
+                String res = JOptionPane.showInputDialog("Desea seguir agregando evidencia: ");
+                r = res.charAt(0);
+            }
+             casos.add(new login( lugar,  tipo, descripcion, detectiveacargo, estado, evidencia, descripcionevidencia, niveldepeligrosidad));
         }
     }
     public static boolean usuarioex(String usuario) {
@@ -204,6 +225,23 @@ public class SamuelFlores_Lab2 {
             }
         }
         return false;
+    }
+    public static void mensaje(){
+        String prioridad = JOptionPane.showInputDialog("Ingrese la prioridad: ");
+        String mensaje = JOptionPane.showInputDialog("Ingrese el mensaje: ");
+        String emisor = JOptionPane.showInputDialog("Ingrese el emisor: ");
+        String receptor = JOptionPane.showInputDialog("Ingrese el receptor: ");
+        mensajeria.add(new mensaje(mensaje, prioridad, emisor, receptor));
+    }
+    public static void listarme(){
+        String salida = "";
+        for (mensaje temp : mensajeria) {
+            if (temp instanceof mensaje) {
+                salida += casos.indexOf(temp) + " ";
+                salida += temp + "\n";
+            }
+        }
+        JOptionPane.showMessageDialog(null, salida);
     }
     
     
